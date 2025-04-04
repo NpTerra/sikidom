@@ -8,14 +8,14 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DMEMTRACE")
 
 # manual test build
-add_executable(${PROJECT_NAME}
-    src/main.cpp
-    src/point.cpp
-    headers/point.hpp
-    headers/math2d.hpp
-)
+#add_executable(${PROJECT_NAME}
+#    src/main.cpp
+#    src/point.cpp
+#    headers/point.hpp
+#    headers/math2d.hpp
+#)
 
 # automatic full build
-#add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS})
 
 include_directories(headers)

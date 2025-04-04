@@ -1,14 +1,17 @@
 #pragma once
 
 #include <cmath>
+#include "point.hpp"
+#include "polygon.hpp"
 
-class Regular : private Polygon {
+class Regular : private Polygon, virtual public Shape {
     private:
         Point center;
         double r, phi;
         void calculateVertices();
     public:
         Regular(size_t vertices = 0, double radius = 1.0, Point center = {0, 0}, double phi = 0);
+        Regular(const Regular& reg);
         virtual ~Regular() = default;
 
         virtual inline const Point& getAnchor() const { return center; }

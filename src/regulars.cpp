@@ -25,6 +25,10 @@ Regular::Regular(size_t vertices, double radius, Point center, double phi)
     calculateVertices();
 }
 
+Regular::Regular(const Regular& reg)
+: Regular(reg.vCount(), reg.r, reg.center, reg.phi)
+{}
+
 
 double Regular::area() const {
     if(vCount() == 0)
@@ -65,10 +69,19 @@ bool Regular::contains(const Shape& s) const
     // circle + circle
     if(s.vCount() == 0)
     {
-
+        double dist = center|s.getAnchor();
+        const Regular* p = dynamic_cast<const Regular*>(&s);
+        
+        return dist <= r && r-dist >= p->r;
     }
 
     // circle + poly
+    for(auto& x : s.getVertices())
+    {
+        if((center|x) > r)
+            return false;
+    }
+    return true;
 }
 
 
