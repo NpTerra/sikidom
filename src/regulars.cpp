@@ -1,9 +1,22 @@
 #include "regulars.hpp"
-#include "polygon.hpp"
-#include "point.hpp"
 #include "math2d.hpp"
 
-void Regular::calculateVertices() {
+Regular::Regular(size_t vertices, double radius, Point center, double phi)
+: Polygon(vertices), center(center), r(radius), phi(phi)
+{
+    if(vertices == 1 || vertices == 2)
+        throw "no shape";
+    
+    calculateVertices();
+}
+
+Regular::Regular(const Regular& reg)
+: Regular(reg.vCount(), reg.r, reg.center, reg.phi)
+{}
+
+
+void Regular::calculateVertices()
+{
     if(vCount() == 0)
         return;
     
@@ -17,20 +30,13 @@ void Regular::calculateVertices() {
     }
 }
 
-Regular::Regular(size_t vertices, double radius, Point center, double phi)
-: Polygon(vertices), center(center), r(radius), phi(phi) {
-    if(vertices == 1 || vertices == 2)
-        throw "no shape";
-    
-    calculateVertices();
-}
 
-Regular::Regular(const Regular& reg)
-: Regular(reg.vCount(), reg.r, reg.center, reg.phi)
-{}
+const Point& Regular::getAnchor() const
+{ return center; }
 
 
-double Regular::area() const {
+double Regular::area() const
+{
     if(vCount() == 0)
         return r*r*M_PI;
     
@@ -85,19 +91,21 @@ bool Regular::contains(const Shape& s) const
 }
 
 
-Regular& Regular::operator=(const Regular& reg) {
+Regular& Regular::operator=(const Regular& reg)
+{
     if(this == &reg)
         return *this;
 
     center = reg.center;
     r = reg.r;
     phi = reg.phi;
-    vertices = reg.vertices;
+    Polygon::operator=(reg);
 
     return *this;
 }
 
-std::istream& operator>>(std::istream& is, Regular& reg) {
+std::istream& operator>>(std::istream& is, Regular& reg)
+{
     size_t vcount;
     is >> vcount;
     if(vcount == 1 || vcount == 2)

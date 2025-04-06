@@ -7,15 +7,15 @@
 class Polygon : virtual public Shape {
     protected:
         std::vector<Point> vertices;
-    public:
         Polygon(size_t vertices);
+    public:
         Polygon(const std::vector<Point>& vertices);
         Polygon(const Polygon& poly);
         virtual ~Polygon() = default;
 
-        virtual inline const Point& getAnchor() const { return vertices[0]; }
-         inline const std::vector<Point>& getVertices() const { return vertices; };
-        inline size_t vCount() const { return vertices.size(); }
+        virtual const Point& getAnchor() const;
+        virtual const std::vector<Point>& getVertices() const;
+        virtual size_t vCount() const;
 
         virtual double area() const;
         virtual double perimeter() const;

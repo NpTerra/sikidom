@@ -1,5 +1,5 @@
-#include "point.hpp"
 #include <limits>
+#include "point.hpp"
 
 const double Point::MAXVAL = std::numeric_limits<double>::max();
 const double Point::MINVAL = std::numeric_limits<double>::min();

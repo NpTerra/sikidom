@@ -1,6 +1,4 @@
-#include <cmath>
 #include "polygon.hpp"
-#include "point.hpp"
 #include "math2d.hpp"
 
 Polygon::Polygon(size_t vertices) : vertices(vertices)
@@ -11,6 +9,18 @@ Polygon::Polygon(const std::vector<Point>& vertices) : vertices(vertices)
 
 Polygon::Polygon(const Polygon& poly) : Polygon(poly.vertices)
 {}
+
+
+const Point& Polygon::getAnchor() const
+{ return vertices[0]; }
+
+
+const std::vector<Point>& Polygon::getVertices() const
+{ return vertices; };
+
+
+size_t Polygon::vCount() const
+{ return vertices.size(); }
 
 
 double Polygon::area() const
@@ -114,6 +124,9 @@ std::istream& operator>>(std::istream& is, Polygon& poly)
 {
     size_t vcount;
     is >> vcount;
+    if(vcount <= 2)
+        throw "no shape";
+    
     poly.vertices.resize(vcount);
     for(auto& x : poly.vertices)
         is >> x;
