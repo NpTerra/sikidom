@@ -118,6 +118,8 @@ bool Polygon::contains(const Shape& s) const
 Polygon& Polygon::operator=(const Polygon& poly)
 {
     vertices = poly.vertices;
+
+    return *this;
 }
 
 std::istream& operator>>(std::istream& is, Polygon& poly)

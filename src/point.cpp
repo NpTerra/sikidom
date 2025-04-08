@@ -1,10 +1,13 @@
 #include <limits>
 #include "point.hpp"
+#include "math2d.hpp"
 
 const double Point::MAXVAL = std::numeric_limits<double>::max();
 const double Point::MINVAL = std::numeric_limits<double>::min();
 
 Point::Point(double x, double y) : x(x), y(y){}
+
+int Point::cmp(const Point& p) const { if (int t = math2d::cmp(x,p.x)) return t; return math2d::cmp(y,p.y); }
 
 bool Point::operator==(const Point& p) const {
     return x==p.x && y==p.y;

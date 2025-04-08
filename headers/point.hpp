@@ -2,11 +2,10 @@
 
 #include <cmath>
 #include <iostream>
-#include "math2d.hpp"
 
 class Point {
     private:
-        int cmp(Point q) const { if (int t = math2d::cmp(x,q.x)) return t; return math2d::cmp(y,q.y); }
+        int cmp(const Point& p) const;
     public:
         double x, y;
         

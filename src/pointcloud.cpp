@@ -2,7 +2,7 @@
 #include "pointcloud.hpp"
 #include "math2d.hpp"
 
-PointCloud::PointCloud(size_t points = 0)
+PointCloud::PointCloud(size_t points)
 : Polygon(0), points(points)
 {}
 
@@ -46,6 +46,8 @@ PointCloud& PointCloud::operator=(const PointCloud& reg)
 {
     Polygon::operator=(reg);
     points = reg.points;
+    
+    return *this;
 }
 
 
@@ -56,7 +58,7 @@ std::istream& operator>>(std::istream& is, PointCloud& reg)
 
     reg.vertices.clear();
     reg.points.resize(vcount);
-    
+
     for(auto& x : reg.points)
         is >> x;
 
