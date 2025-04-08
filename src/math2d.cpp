@@ -1,6 +1,14 @@
 #include "math2d.hpp"
 
 namespace math2d {
+
+    template<typename T>
+    int cmp(T x, T y) {
+        if (x == y) return 0;
+        if (x < y) return -1;
+        return 1;
+    }
+
     bool isPointOnSegment(const Point& p, const Point& a, const Point& b)
     {
         if(!collinear(p, a, b))

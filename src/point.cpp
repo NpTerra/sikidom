@@ -50,3 +50,7 @@ std::istream& operator>>(std::istream& is, Point& p) {
     is >> p.x >> p.y;
     return is;
 }
+
+#define Comp(x) bool Point::operator x (Point q) const { return cmp(q) x 0; }
+    Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)
+#undef Comp

@@ -3,7 +3,7 @@
 #include "point.hpp"
 
 namespace math2d {
-
+    
     enum DIRECTION {
         CENTER = 0,
         LEFT = 1,
@@ -11,6 +11,9 @@ namespace math2d {
         BACK = -2,
         FRONT = 2
     };
+    
+    template<typename T>
+    int cmp(T x, T y);
 
     inline double orient(const Point& a, const Point& b, const Point& c)
     {
