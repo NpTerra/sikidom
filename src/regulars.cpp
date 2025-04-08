@@ -25,8 +25,8 @@ void Regular::calculateVertices()
     
     for(size_t i = 0; i < vCount(); i++)
     {
-        this->vertices[i] = {center.x()+cos(alpha)*r,
-                             center.y()+sin(alpha)*r};
+        this->vertices[i] = {center.x+cos(alpha)*r,
+                             center.y+sin(alpha)*r};
     }
 }
 
@@ -60,8 +60,8 @@ bool Regular::contains(const Point& p) const
         return Polygon::contains(p);
     
     // circle
-    double x = p.x() - center.x();
-    double y = p.y() - center.y();
+    double x = p.x - center.x;
+    double y = p.y - center.y;
 
     return x*x + y*y <= r*r; 
 }

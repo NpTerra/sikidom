@@ -15,11 +15,11 @@ PointCloud::PointCloud(const PointCloud& reg)
 
 void PointCloud::setHull()
 {
-
+    
 }
 
 
-const std::vector<Point> PointCloud::getPoints() const
+const std::vector<Point>& PointCloud::getPoints() const
 { return points; }
 
 

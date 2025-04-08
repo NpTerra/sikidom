@@ -4,34 +4,31 @@
 const double Point::MAXVAL = std::numeric_limits<double>::max();
 const double Point::MINVAL = std::numeric_limits<double>::min();
 
-Point::Point(double x, double y) : px(x), py(y){}
-
-double Point::x() const { return px; }
-double Point::y() const { return py; }
+Point::Point(double x, double y) : x(x), y(y){}
 
 bool Point::operator==(const Point& p) const {
-    return px==p.px && py==p.py;
+    return x==p.x && y==p.y;
 }
 
 Point& Point::operator=(const Point& p) {
-    px = p.px;
-    py = p.py;
+    x = p.x;
+    y = p.y;
     return *this;
 }
 
 Point Point::operator+(const Point& p) const
 {
-    return Point(px+p.px, py+p.py);
+    return Point(x+p.x, y+p.y);
 }
 
 Point Point::operator-(const Point& p) const
 {
-    return Point(px-p.px, py-p.py);
+    return Point(x-p.x, y-p.y);
 }
 
 double Point::operator|(const Point& p) const {
-    double dx = px-p.px;
-    double dy = py-p.py;
+    double dx = x-p.x;
+    double dy = y-p.y;
     return sqrt(dx*dx + dy*dy);
 }
 
@@ -39,17 +36,17 @@ double Point::operator|(const Point& p) const {
  * Dot Product
  */
 double Point::operator*(const Point& p) const {
-    return px*p.px + py*p.py;
+    return x*p.x + y*p.y;
 }
 
 /**
  * Cross Product
  */
 double Point::operator%(const Point& p) const {
-    return px*p.py - py*p.px;
+    return x*p.y - y*p.x;
 }
 
 std::istream& operator>>(std::istream& is, Point& p) {
-    is >> p.px >> p.py;
+    is >> p.x >> p.y;
     return is;
 }

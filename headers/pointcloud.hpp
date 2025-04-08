@@ -20,7 +20,7 @@ class PointCloud : private Polygon, virtual public Shape {
         using Polygon::getVertices;
         using Polygon::vCount;
 
-        const std::vector<Point> getPoints() const;
+        const std::vector<Point>& getPoints() const;
         
         using Polygon::area;
         using Polygon::perimeter;

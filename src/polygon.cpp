@@ -31,8 +31,8 @@ double Polygon::area() const
         const Point& a = vertices[i];
         const Point& b = vertices[(i+1)%vCount()];
 
-        double y = (a.y() + b.y()) / 2.0;
-        double x = a.x() - b.x();
+        double y = (a.y + b.y) / 2.0;
+        double x = a.x - b.x;
 
         ar += x*y;
     }
@@ -72,7 +72,7 @@ bool Polygon::intersects(const Point& a, const Point& b) const
 
 bool Polygon::contains(const Point& p) const
 {
-    Point inf(p.x(), Point::MAXVAL);
+    Point inf(p.x, Point::MAXVAL);
 
     size_t intersections = 0;
     for(size_t i = 0, j; i < vCount(); i++)

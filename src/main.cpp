@@ -11,11 +11,7 @@ using math2d::leaning;
 
 int main() {
     
-    Regular a(0, 2.0, {0,0}, 0);
-    Regular b(0, 1.0, {1,0}, 0);
-    bool c = a.contains(b);
-
-    cout << c << endl;
+    const Point a(10, 2);
 
     //std::cout << "Intersect: " << std::boolalpha << doIntersect(a, b, c, d) << std::endl;
     //std::cout << "On segment: " << std::boolalpha << isPointOnSegment(a, c, d) << std::endl;
