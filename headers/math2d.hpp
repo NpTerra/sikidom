@@ -13,7 +13,11 @@ namespace math2d {
     };
     
     template<typename T>
-    int cmp(T x, T y);
+    int cmp(T x, T y) {
+        if (x == y) return 0;
+        if (x < y) return -1;
+        return 1;
+    }
 
     inline double orient(const Point& a, const Point& b, const Point& c)
     {
