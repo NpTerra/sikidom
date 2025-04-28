@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stddef.h>
-#include <vector>
+#include "vector.hpp"
 #include "point.hpp"
 
 class Shape {
@@ -9,7 +9,7 @@ class Shape {
         virtual ~Shape() = default;
 
         virtual const Point& getAnchor() const = 0;
-        virtual const std::vector<Point>& getVertices() const = 0;
+        virtual const Vector<Point>& getVertices() const = 0;
         virtual size_t vCount() const = 0;
 
         virtual double area() const = 0;

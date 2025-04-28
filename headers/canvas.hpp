@@ -1,11 +1,11 @@
 #pragma once
 
-#include <vector>
+#include "vector.hpp"
 #include "shape.hpp"
 
 class Canvas {
     private:
-        std::vector<Shape*> shapes;
+        Vector<Shape*> shapes;
     public:
         
 };

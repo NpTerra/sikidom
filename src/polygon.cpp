@@ -4,7 +4,7 @@
 Polygon::Polygon(size_t vertices) : vertices(vertices)
 {}
 
-Polygon::Polygon(const std::vector<Point>& vertices) : vertices(vertices)
+Polygon::Polygon(const Vector<Point>& vertices) : vertices(vertices)
 {}
 
 Polygon::Polygon(const Polygon& poly) : Polygon(poly.vertices)
@@ -15,7 +15,7 @@ const Point& Polygon::getAnchor() const
 { return vertices[0]; }
 
 
-const std::vector<Point>& Polygon::getVertices() const
+const Vector<Point>& Polygon::getVertices() const
 { return vertices; };
 
 

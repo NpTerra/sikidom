@@ -1,29 +1,29 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include "vector.hpp"
 #include "shape.hpp"
 
 class Polygon : virtual public Shape {
     protected:
-        std::vector<Point> vertices;
+        Vector<Point> vertices;
         Polygon(size_t vertices);
     public:
-        Polygon(const std::vector<Point>& vertices);
+        Polygon(const Vector<Point>& vertices);
         Polygon(const Polygon& poly);
         virtual ~Polygon() = default;
 
-        virtual const Point& getAnchor() const;
-        virtual const std::vector<Point>& getVertices() const;
-        virtual size_t vCount() const;
+        virtual const Point& getAnchor() const override;
+        virtual const Vector<Point>& getVertices() const override;
+        virtual size_t vCount() const override;
 
-        virtual double area() const;
-        virtual double perimeter() const;
+        virtual double area() const override;
+        virtual double perimeter() const override;
 
-        virtual bool intersects(const Point& a, const Point& b) const;
+        virtual bool intersects(const Point& a, const Point& b) const override;
 
-        virtual bool contains(const Point& p) const;
-        virtual bool contains(const Shape& s) const;
+        virtual bool contains(const Point& p) const override;
+        virtual bool contains(const Shape& s) const override;
         
         virtual Polygon& operator=(const Polygon& poly);
 

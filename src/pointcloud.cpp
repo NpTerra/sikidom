@@ -6,7 +6,7 @@ PointCloud::PointCloud(size_t points)
 : Polygon(0), points(points)
 {}
 
-PointCloud::PointCloud(const std::vector<Point>& points)
+PointCloud::PointCloud(const Vector<Point>& points)
 : Polygon(0), points(points)
 { setHull(); }
 
@@ -17,9 +17,8 @@ PointCloud::PointCloud(const PointCloud& reg)
 
 void PointCloud::setHull()
 {
-    std::vector<Point> temp = points;
+    Vector<Point> temp = points;
     std::sort(temp.begin(), temp.end());
-
     vertices.push_back(temp[0]);
     vertices.push_back(temp[1]);
     vertices.push_back(temp[2]);
@@ -38,7 +37,7 @@ void PointCloud::setHull()
 }
 
 
-const std::vector<Point>& PointCloud::getPoints() const
+const Vector<Point>& PointCloud::getPoints() const
 { return points; }
 
 

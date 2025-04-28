@@ -1,18 +1,18 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include "vector.hpp"
 #include "point.hpp"
 #include "shape.hpp"
 #include "polygon.hpp"
 
 class PointCloud : private Polygon, virtual public Shape {
     private:
-        std::vector<Point> points;
+        Vector<Point> points;
         void setHull();
     public:
         PointCloud(size_t points = 0);
-        PointCloud(const std::vector<Point>& points);
+        PointCloud(const Vector<Point>& points);
         PointCloud(const PointCloud& reg);
         virtual ~PointCloud() = default;
 
@@ -20,7 +20,7 @@ class PointCloud : private Polygon, virtual public Shape {
         using Polygon::getVertices;
         using Polygon::vCount;
 
-        const std::vector<Point>& getPoints() const;
+        const Vector<Point>& getPoints() const;
         
         using Polygon::area;
         using Polygon::perimeter;

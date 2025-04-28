@@ -15,17 +15,17 @@ class Regular : private Polygon, virtual public Shape {
         Regular(const Regular& reg);
         virtual ~Regular() = default;
 
-        const Point& getAnchor() const;
+        const Point& getAnchor() const override;
         using Polygon::getVertices;
         using Polygon::vCount;
         
-        double area() const;
+        double area() const override;
         using Polygon::perimeter;
 
-        virtual bool intersects(const Point& a, const Point& b) const;
+        virtual bool intersects(const Point& a, const Point& b) const override;
 
-        virtual bool contains(const Point& p) const;
-        virtual bool contains(const Shape& s) const;
+        virtual bool contains(const Point& p) const override;
+        virtual bool contains(const Shape& s) const override;
 
         Regular& operator=(const Regular& reg);
 
