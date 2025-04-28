@@ -1,5 +1,6 @@
 #include "polygon.hpp"
 #include "math2d.hpp"
+#include "memtrace.h"
 
 Polygon::Polygon(size_t vertices) : vertices(vertices)
 {}

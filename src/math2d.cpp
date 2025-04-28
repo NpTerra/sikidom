@@ -1,4 +1,5 @@
 #include "math2d.hpp"
+#include "memtrace.h"
 
 namespace math2d {
 

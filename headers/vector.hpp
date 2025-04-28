@@ -1,6 +1,7 @@
 #pragma once
 #include <stddef.h>
 #include <algorithm>
+#include "memtrace.h"
 
 #define __IT_OUTOFRANGE     "Iterátor túlindexelés!"
 #define __VEC_OUTOFRANGE    "Vector túlindexelés!"

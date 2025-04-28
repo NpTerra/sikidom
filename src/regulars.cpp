@@ -1,5 +1,6 @@
 #include "regulars.hpp"
 #include "math2d.hpp"
+#include "memtrace.h"
 
 Regular::Regular(size_t vertices, double radius, Point center, double phi)
 : Polygon(vertices), center(center), r(radius), phi(phi)

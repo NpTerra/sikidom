@@ -1,6 +1,7 @@
 #include <algorithm>
 #include "pointcloud.hpp"
 #include "math2d.hpp"
+#include "memtrace.h"
 
 PointCloud::PointCloud(size_t points)
 : Polygon(0), points(points)
