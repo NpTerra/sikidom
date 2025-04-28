@@ -25,7 +25,23 @@ class Polygon : virtual public Shape {
         virtual bool contains(const Point& p) const override;
         virtual bool contains(const Shape& s) const override;
         
+
+        /**
+         * Sokszög felülírása egy másikkal.
+         * 
+         * \param poly A másik sokszög.
+         * 
+         * \returns A módosított sokszög.
+         */
         virtual Polygon& operator=(const Polygon& poly);
 
+        /**
+         * Adatok beolvasása megadott bemenetről egy megadott sokszögbe.
+         * 
+         * \param is A bemenet, amiről olvasni kell.
+         * \param poly A sokszög, amibe az adatokat be kell olvasni.
+         * 
+         * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
+         */
         friend std::istream& operator>>(std::istream& is, Polygon& poly);
 };
