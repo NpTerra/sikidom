@@ -9,27 +9,78 @@
 class PointCloud : private Polygon, virtual public Shape {
     private:
         Vector<Point> points;
+
+        /**
+         * A konvex burok kiszámítása a pontfelhő pontjaiból.
+         */
         void setHull();
     public:
         PointCloud(size_t points = 0);
         PointCloud(const Vector<Point>& points);
-        PointCloud(const PointCloud& reg);
+        PointCloud(const PointCloud& pc);
         virtual ~PointCloud() = default;
 
         using Polygon::getAnchor;
+
+        /**
+         * Megadja a pontfelhő konvex burkát alkotó pontok halmazát.
+         * 
+         * \returns A konvex burok pontjainak halmaza.
+         */
         using Polygon::getVertices;
+
+
+        /**
+         * Megadja a pontfelhő konvex burkát alkotó pontok számát
+         * 
+         * \returns A konvex burok pontjainak száma.
+         */
         using Polygon::vCount;
 
+        /**
+         * Megadja a pontfelhő pontjainak halmazát.
+         * 
+         * \returns A pontok halmaza.
+         */
         const Vector<Point>& getPoints() const;
         
+
+        /**
+         * Megadja a pontfelhő konvex burkának területét.
+         * 
+         * \returns A konvex burok területe.
+         */
         using Polygon::area;
+
+
+        /**
+         * Megadja a pontfelhő konvex burkának kerületét.
+         * 
+         * \returns A konvex burok kerülete.
+         */
         using Polygon::perimeter;
 
         using Polygon::intersects;
 
         using Polygon::contains;
 
-        PointCloud& operator=(const PointCloud& reg);
+        /**
+         * Pontfelhő felülírása egy másikkal.
+         * 
+         * \param pc A másik pontfelhő.
+         * 
+         * \returns A módosított pontfelhő.
+         */
+        PointCloud& operator=(const PointCloud& pc);
 
-        friend std::istream& operator>>(std::istream& is, PointCloud& reg);
+
+        /**
+         * Adatok beolvasása megadott bemenetről egy megadott pontfelhőbe.
+         * 
+         * \param is A bemenet, amiről olvasni kell.
+         * \param pc A pontfelhő, amibe az adatokat be kell olvasni.
+         * 
+         * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
+         */
+        friend std::istream& operator>>(std::istream& is, PointCloud& pc);
 };

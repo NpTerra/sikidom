@@ -10,8 +10,8 @@ PointCloud::PointCloud(const Vector<Point>& points)
 : Polygon(0), points(points)
 { setHull(); }
 
-PointCloud::PointCloud(const PointCloud& reg)
-: Polygon(reg), points(reg.points)
+PointCloud::PointCloud(const PointCloud& pc)
+: Polygon(pc), points(pc.points)
 {}
 
 
@@ -41,24 +41,24 @@ const Vector<Point>& PointCloud::getPoints() const
 { return points; }
 
 
-PointCloud& PointCloud::operator=(const PointCloud& reg)
+PointCloud& PointCloud::operator=(const PointCloud& pc)
 {
-    Polygon::operator=(reg);
-    points = reg.points;
+    Polygon::operator=(pc);
+    points = pc.points;
     
     return *this;
 }
 
 
-std::istream& operator>>(std::istream& is, PointCloud& reg)
+std::istream& operator>>(std::istream& is, PointCloud& pc)
 {
     size_t vcount;
     is >> vcount;
 
-    reg.vertices.clear();
-    reg.points.resize(vcount);
+    pc.vertices.clear();
+    pc.points.resize(vcount);
 
-    for(auto& x : reg.points)
+    for(auto& x : pc.points)
         is >> x;
 
     return is;
