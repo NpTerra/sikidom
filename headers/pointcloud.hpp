@@ -8,7 +8,7 @@
 
 class PointCloud : private Polygon, virtual public Shape {
     private:
-        Vector<Point> points;
+        Vector<Point> points;   ///< a Pontfelhő pontjai.
 
         /**
          * A konvex burok kiszámítása a pontfelhő pontjaiból.
@@ -20,6 +20,12 @@ class PointCloud : private Polygon, virtual public Shape {
         PointCloud(const PointCloud& pc);
         virtual ~PointCloud() = default;
 
+        /**
+         * \copydoc Shape::getAnchor()
+         * 
+         * \remarks
+         * Pontfelhő esetén a konvex burok első eleme.
+         */
         using Polygon::getAnchor;
 
         /**
@@ -46,7 +52,7 @@ class PointCloud : private Polygon, virtual public Shape {
         
 
         /**
-         * Megadja a pontfelhő konvex burkának területét.
+         * Megadja a pontfelhő konvex burkának területét. (egység^2)
          * 
          * \returns A konvex burok területe.
          */
@@ -54,7 +60,7 @@ class PointCloud : private Polygon, virtual public Shape {
 
 
         /**
-         * Megadja a pontfelhő konvex burkának kerületét.
+         * Megadja a pontfelhő konvex burkának kerületét. (egységhossz)
          * 
          * \returns A konvex burok kerülete.
          */

@@ -6,13 +6,19 @@
 
 class Polygon : virtual public Shape {
     protected:
-        Vector<Point> vertices;
+        Vector<Point> vertices;     ///< A sokszög csúcsai.
         Polygon(size_t vertices);
     public:
         Polygon(const Vector<Point>& vertices);
         Polygon(const Polygon& poly);
         virtual ~Polygon() = default;
 
+        /**
+         * \copydoc Shape::getAnchor()
+         * 
+         * \remarks
+         * Sokszög esetén a ponthalmaz első eleme.
+         */
         virtual const Point& getAnchor() const override;
         virtual const Vector<Point>& getVertices() const override;
         virtual size_t vCount() const override;

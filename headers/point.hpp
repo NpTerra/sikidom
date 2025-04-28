@@ -15,7 +15,8 @@ class Point {
         int cmp(const Point& p) const;
 
     public:
-        double x, y;
+        double x; ///< X koordináta
+        double y; ///< Y koordináta
         
         static const double MAXVAL; ///< X és Y értékek minimum határa
         static const double MINVAL; ///< X és Y értékek maximum határa
