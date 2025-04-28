@@ -13,6 +13,7 @@ class Point {
          * \returns math2d::cmp(x1, x2), ha x1 != x2, egyébként math2d::cmp(y1, y2) 
         */
         int cmp(const Point& p) const;
+
     public:
         double x, y;
         
@@ -21,8 +22,9 @@ class Point {
 
         Point(double x = 0.0, double y = 0.0);
 
+
         /**
-         * Két pont egyenlőségének vizsgálata.
+         * Pont egyenlőségének vizsgálata egy másik ponttal.
          * 
          * \param p A másik pont.
          * 
@@ -30,6 +32,7 @@ class Point {
          */
         bool operator==(const Point& p) const;
         
+
         /**
          * Jelenlegi pont felülírása egy másik megadott ponttal.
          * 
@@ -39,8 +42,9 @@ class Point {
          */
         Point& operator=(const Point& p);
 
+
         /**
-         * Két pont összege.
+         * Az adott pont összege egy másik ponttal.
          * 
          * \param p A másik pont.
          * 
@@ -49,7 +53,7 @@ class Point {
         Point operator+(const Point& p) const;
 
         /**
-         * Két pont különbsége.
+         * Az adott pont különbsége egy másik ponttal.
          * 
          * \param p A másik pont.
          * 
@@ -57,8 +61,9 @@ class Point {
          */
         Point operator-(const Point& p) const;
 
+
         /**
-         * Meghatározza két pont távolságát.
+         * Adott pont távolsága egy másik ponttól.
          * 
          * \param p A másik pont.
          * 
@@ -66,8 +71,9 @@ class Point {
          */
         double operator|(const Point& p) const;
 
+
         /**
-         * Meghatározza két pont skaláris szorzatát. (dot product)
+         * Adott pont skaláris szorzata egy másik ponttal. (dot product)
          * 
          * \param p A másik pont.
          * 
@@ -75,8 +81,9 @@ class Point {
          */
         double operator*(const Point& p) const;
 
+        
         /**
-         * Meghatározza két pont vektoriális szorzatát. (cross product)
+         * Adott pont vektoriális szorzata egy másik ponttal. (cross product)
          * 
          * \param p A másik pont.
          * 
@@ -84,6 +91,7 @@ class Point {
          */
         double operator%(const Point& p) const;
         
+
         /**
          * Adatok beolvasása megadott bemenetről egy megadott pontba.
          * 
@@ -94,8 +102,9 @@ class Point {
          */
         friend std::istream& operator>>(std::istream& is, Point& p);
 
+
         /**
-         * @brief Összehasonlító operátorok definiálása makróval.
+         * @brief Pontokat összehasonlító operátorok definiálása makróval.
          *
          * A következő operátorok lesznek definiálva:
          * - operator>
