@@ -16,7 +16,7 @@ class Vector {
     public:
         Vector(size_t size) : _cap(size), _size(0), _arr(new T[size]) {}
         Vector() : Vector(0) {}
-        ~Vector() { delete[] _arr; }
+        virtual ~Vector() { delete[] _arr; }
 
 
         /**

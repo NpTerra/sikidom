@@ -4,32 +4,32 @@
 Canvas::Canvas() : shapes(0) {}
 
 Canvas::~Canvas() {
-    for(auto &x : shapes)
+    for(Shape* x : shapes)
         delete x;
 }
 
-void remove(size_t index) {
+void Canvas::remove(size_t index) {
 
 }
 
-void clear() {
+void Canvas::clear() {
 
 }
 
-void add(Shape* s) {
+void Canvas::add(Shape* s) {
+    shapes.push_back(s);
+}
+
+void Canvas::print(size_t index) {
 
 }
 
-void print(size_t index) {
+void Canvas::printAll() {
 
 }
 
-void printAll() {
-
-}
-
-bool isBaseShape(size_t index) {
-
+bool Canvas::isBaseShape(size_t index) {
+    return true;
 }
 
 std::istream& operator<<(std::istream& is, Canvas& c);

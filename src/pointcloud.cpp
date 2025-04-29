@@ -60,6 +60,7 @@ void PointCloud::read(std::istream& is) {
 
     for(auto& x : this->points)
         is >> x;
+    //this->setHull();
 }
 
 

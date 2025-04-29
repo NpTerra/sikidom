@@ -7,8 +7,7 @@
 class Polygon : virtual public Shape {
     protected:
         Vector<Point> vertices;     ///< A sokszög csúcsai.
-        Polygon(size_t vertices);
-
+        
         /**
          * Adatok beolvasása megadott bemenetről egy megadott sokszögbe.
          * 
@@ -23,9 +22,10 @@ class Polygon : virtual public Shape {
          */
         virtual void print(std::ostream& os) const override;
     public:
+        Polygon(size_t vertices = 0);
         Polygon(const Vector<Point>& vertices);
         Polygon(const Polygon& poly);
-        virtual ~Polygon() = default;
+        virtual ~Polygon() {};
 
         /**
          * \copydoc Shape::getAnchor()

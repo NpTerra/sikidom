@@ -8,6 +8,9 @@ class Canvas {
     private:
         Vector<Shape*> shapes; ///< Az alakzatok listája. (heterogén kollekció)
     public:
+        Canvas();
+        ~Canvas();
+
         /**
          * Alakzat törlése a listából.
          * 

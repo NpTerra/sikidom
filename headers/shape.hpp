@@ -102,7 +102,11 @@ class Shape {
          * 
          * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
          */
-        friend std::istream& operator>>(std::istream& is, Shape& shape);
+        friend std::istream& operator>>(std::istream& is, Shape& shape){
+            shape.read(is);
+        
+            return is;
+        }
 
         /**
          * Alakzat adatainak kiírása megadott kimenetre.
@@ -112,17 +116,9 @@ class Shape {
          * 
          * \returns A kimenet referenciája, hogy lehetővé tegye az operátor láncolását.
          */
-        friend std::ostream& operator<<(std::ostream& os, Shape& shape);
+        friend std::ostream& operator<<(std::ostream& os, Shape& shape){
+            shape.print(os);
+        
+            return os;
+        }
 };
-
-std::istream& operator>>(std::istream& is, Shape& shape) {
-    shape.read(is);
-
-    return is;
-}
-
-std::ostream& operator<<(std::ostream& os, Shape& shape) {
-    shape.print(os);
-
-    return os;
-}
