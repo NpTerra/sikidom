@@ -5,7 +5,7 @@
 
 #define __IT_OUTOFRANGE     "Iterátor túlindexelés!"
 #define __VEC_OUTOFRANGE    "Vector túlindexelés!"
-#define __VEC_EMPTY         "Üres Vector-nak nem lehet kikérni elemét!"
+#define __VEC_EMPTY         "Üres Vectornak nem lehet kikérni elemét!"
 
 template<typename T>
 class Vector {
@@ -92,6 +92,25 @@ class Vector {
 
             _arr[_size++] = n;
         }
+        
+
+        /**
+         * Elem törlése a Vectorból.
+         * 
+         * \param index A törlésre szánt elem indexe.
+         * 
+         * \throws std::out_of_range Ha az index kilóg az eltárolt elemek határán.
+         */
+        void erase(size_t index) {
+            if(index >= _size)
+                throw std::out_of_range(__VEC_OUTOFRANGE);
+            
+            _size--;
+            for(size_t i = index; i < _size; i++)
+            {
+                _arr[i] = _arr[i+1];
+            }
+        }
 
 
         /**
@@ -116,7 +135,7 @@ class Vector {
          * 
          * \returns A keresett elem.
          * 
-         * \throws std::out_of_range Ha a keresett index kilóg az eltárol elemek határán.
+         * \throws std::out_of_range Ha a keresett index kilóg az eltárolt elemek határán.
          */
         T& operator[](size_t index) const {
             if(index >= _size)

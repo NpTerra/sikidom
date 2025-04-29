@@ -123,16 +123,19 @@ Polygon& Polygon::operator=(const Polygon& poly)
     return *this;
 }
 
-std::istream& operator>>(std::istream& is, Polygon& poly)
-{
+
+void Polygon::read(std::istream& is) {
     size_t vcount;
     is >> vcount;
     if(vcount <= 2)
         throw "no shape";
     
-    poly.vertices.resize(vcount);
-    for(auto& x : poly.vertices)
+    this->vertices.resize(vcount);
+    for(auto& x : this->vertices)
         is >> x;
+}
 
-    return is;
+
+void Polygon::print(std::ostream& os) const {
+    
 }

@@ -8,6 +8,20 @@ class Polygon : virtual public Shape {
     protected:
         Vector<Point> vertices;     ///< A sokszög csúcsai.
         Polygon(size_t vertices);
+
+        /**
+         * Adatok beolvasása megadott bemenetről egy megadott sokszögbe.
+         * 
+         * \param is A bemenet, amiről olvasni kell.
+         */
+        virtual void read(std::istream& is) override;
+        
+        /**
+         * Sokszög adatainak kiírása megadott kimenetre.
+         * 
+         * \param os A kimenet, amire az adatokat ki kell írni.
+         */
+        virtual void print(std::ostream& os) const override;
     public:
         Polygon(const Vector<Point>& vertices);
         Polygon(const Polygon& poly);
@@ -40,14 +54,4 @@ class Polygon : virtual public Shape {
          * \returns A módosított sokszög.
          */
         virtual Polygon& operator=(const Polygon& poly);
-
-        /**
-         * Adatok beolvasása megadott bemenetről egy megadott sokszögbe.
-         * 
-         * \param is A bemenet, amiről olvasni kell.
-         * \param poly A sokszög, amibe az adatokat be kell olvasni.
-         * 
-         * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
-         */
-        friend std::istream& operator>>(std::istream& is, Polygon& poly);
 };

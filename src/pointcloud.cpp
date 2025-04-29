@@ -51,16 +51,18 @@ PointCloud& PointCloud::operator=(const PointCloud& pc)
 }
 
 
-std::istream& operator>>(std::istream& is, PointCloud& pc)
-{
+void PointCloud::read(std::istream& is) {
     size_t vcount;
     is >> vcount;
 
-    pc.vertices.clear();
-    pc.points.resize(vcount);
+    this->vertices.clear();
+    this->points.resize(vcount);
 
-    for(auto& x : pc.points)
+    for(auto& x : this->points)
         is >> x;
+}
 
-    return is;
+
+void PointCloud::print(std::ostream& os) const {
+    
 }

@@ -5,6 +5,20 @@
 #include "point.hpp"
 
 class Shape {
+    protected:
+        /**
+         * Alakzat adatainak beolvasása a megadott bemenetről.
+         * 
+         * \param is A bemenet.
+         */
+        virtual void read(std::istream& is) = 0;
+
+        /**
+         * Alakzat adatainak kiírása a megadott kimenetre.
+         * 
+         * \param os A kimenet.
+         */
+        virtual void print(std::ostream& os) const = 0;
     public:
         virtual ~Shape() = default;
 
@@ -78,4 +92,37 @@ class Shape {
          * \returns Igaz érték, ha a kérdéses pont teljes terjedelmében tartalmazva van.
          */
         virtual bool contains(const Shape& s) const = 0;
+
+
+        /**
+         * Adatok beolvasása megadott bemenetről egy alakzatba.
+         * 
+         * \param is A bemenet, amiről olvasni kell.
+         * \param shape Az alakzat, amibe az adatokat be kell olvasni.
+         * 
+         * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
+         */
+        friend std::istream& operator>>(std::istream& is, Shape& shape);
+
+        /**
+         * Alakzat adatainak kiírása megadott kimenetre.
+         * 
+         * \param os A kimenet, amire az adatokat ki kell írni.
+         * \param shape Az alakzat.
+         * 
+         * \returns A kimenet referenciája, hogy lehetővé tegye az operátor láncolását.
+         */
+        friend std::ostream& operator<<(std::ostream& os, Shape& shape);
 };
+
+std::istream& operator>>(std::istream& is, Shape& shape) {
+    shape.read(is);
+
+    return is;
+}
+
+std::ostream& operator<<(std::ostream& os, Shape& shape) {
+    shape.print(os);
+
+    return os;
+}

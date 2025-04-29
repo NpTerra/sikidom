@@ -14,6 +14,20 @@ class PointCloud : private Polygon, virtual public Shape {
          * A konvex burok kiszámítása a pontfelhő pontjaiból.
          */
         void setHull();
+    protected:
+        /**
+         * Adatok beolvasása megadott bemenetről egy megadott pontfelhőbe.
+         * 
+         * \param is A bemenet, amiről olvasni kell.
+         */
+        virtual void read(std::istream& is) override;
+        
+        /**
+         * Pontfelhő adatainak kiírása megadott kimenetre.
+         * 
+         * \param os A kimenet, amire az adatokat ki kell írni.
+         */
+        virtual void print(std::ostream& os) const override;
     public:
         PointCloud(size_t points = 0);
         PointCloud(const Vector<Point>& points);
@@ -78,15 +92,4 @@ class PointCloud : private Polygon, virtual public Shape {
          * \returns A módosított pontfelhő.
          */
         PointCloud& operator=(const PointCloud& pc);
-
-
-        /**
-         * Adatok beolvasása megadott bemenetről egy megadott pontfelhőbe.
-         * 
-         * \param is A bemenet, amiről olvasni kell.
-         * \param pc A pontfelhő, amibe az adatokat be kell olvasni.
-         * 
-         * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
-         */
-        friend std::istream& operator>>(std::istream& is, PointCloud& pc);
 };

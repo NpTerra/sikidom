@@ -11,6 +11,20 @@ class Regular : private Polygon, virtual public Shape {
         double r;                   ///< A "húrsokszög" körének sugara. (az osztály tárolhat sima kört is)
         double phi;                 ///< Kezdeti elforgatás fokban számolva.
         void calculateVertices();   ///< Szabályos alakzat csúcsainak kiszámítása a középponthoz képest.
+    protected:
+        /**
+         * Adatok beolvasása megadott bemenetről egy megadott szabályos alakzatba.
+         * 
+         * \param is A bemenet, amiről olvasni kell.
+         */
+        virtual void read(std::istream& is) override;
+        
+        /**
+         * Szabályos alakzat adatainak kiírása megadott kimenetre.
+         * 
+         * \param os A kimenet, amire az adatokat ki kell írni.
+         */
+        virtual void print(std::ostream& os) const override;
     public:
         Regular(size_t vertices = 0, double radius = 1.0, Point center = {0, 0}, double phi = 0);
         Regular(const Regular& reg);
@@ -35,6 +49,4 @@ class Regular : private Polygon, virtual public Shape {
         virtual bool contains(const Shape& s) const override;
 
         Regular& operator=(const Regular& reg);
-
-        friend std::istream& operator>>(std::istream& is, Regular& reg);
 };

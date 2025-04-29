@@ -105,8 +105,8 @@ Regular& Regular::operator=(const Regular& reg)
     return *this;
 }
 
-std::istream& operator>>(std::istream& is, Regular& reg)
-{
+
+void Regular::read(std::istream& is) {
     size_t vcount;
     is >> vcount;
     if(vcount == 1 || vcount == 2)
@@ -117,8 +117,11 @@ std::istream& operator>>(std::istream& is, Regular& reg)
     Point center;
     is >> radius >> center >> phi;
     
-    reg.vertices.resize(vcount);
-    reg.calculateVertices();
+    this->vertices.resize(vcount);
+    this->calculateVertices();
+}
 
-    return is;
+
+void Regular::print(std::ostream& os) const {
+    
 }

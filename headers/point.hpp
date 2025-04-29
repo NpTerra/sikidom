@@ -103,6 +103,16 @@ class Point {
          */
         friend std::istream& operator>>(std::istream& is, Point& p);
 
+        /**
+         * Pont adatainak kiírása megadott kimenetre.
+         * 
+         * \param os A kimenet, amire az adatokat ki kell írni.
+         * \param p A pont.
+         * 
+         * \returns A kimenet referenciája, hogy lehetővé tegye az operátor láncolását.
+         */
+        friend std::ostream& operator<<(std::ostream& os, Point& p);
+
 
         /**
          * @brief Pontokat összehasonlító operátorok definiálása makróval.
