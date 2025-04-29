@@ -1,6 +1,5 @@
 #include <iostream>
 #include "gtest_lite.h"
-#include "memtrace.h"
 
 #include "canvas.hpp"
 #include "shape.hpp"
@@ -25,6 +24,11 @@ int main() {
         b << p3;
         EXPECT_STREQ("30 30", b.str().c_str());
     } END;
+
+    Vector<int> asd;
+    asd.push_back(1);
+    asd.push_back(2);
+    asd.push_back(3);
     
     TEST(Adatok, Heterogen) {
         istringstream a(string("3 0 0 10 10 10 0   4 50 0 0 45"));

@@ -1,5 +1,4 @@
 #include "canvas.hpp"
-#include "memtrace.h"
 
 Canvas::Canvas() : shapes(0) {}
 

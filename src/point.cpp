@@ -1,7 +1,6 @@
 #include <limits>
 #include "point.hpp"
 #include "math2d.hpp"
-#include "memtrace.h"
 
 const double Point::MAXVAL = std::numeric_limits<double>::max();
 const double Point::MINVAL = std::numeric_limits<double>::min();

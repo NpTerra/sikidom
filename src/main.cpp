@@ -1,5 +1,4 @@
 #include <iostream>
-#include "memtrace.h"
 
 int main() {
     

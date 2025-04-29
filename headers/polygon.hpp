@@ -53,5 +53,5 @@ class Polygon : virtual public Shape {
          * 
          * \returns A módosított sokszög.
          */
-        virtual Polygon& operator=(const Polygon& poly);
+        Polygon& operator=(const Polygon& poly);
 };

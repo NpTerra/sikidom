@@ -1,7 +1,6 @@
 #pragma once
-#include <stddef.h>
+#include <cstddef>
 #include <algorithm>
-#include "memtrace.h"
 
 #define __IT_OUTOFRANGE     "Iterátor túlindexelés!"
 #define __VEC_OUTOFRANGE    "Vector túlindexelés!"
@@ -14,8 +13,7 @@ class Vector {
         size_t _cap;    ///< Jelenlegi tárolókapacitás.
         size_t _size;   ///< Jelenleg eltárolt elemek száma.
     public:
-        Vector(size_t size) : _cap(size), _size(0), _arr(new T[size]) {}
-        Vector() : Vector(0) {}
+        Vector(size_t size = 0) : _arr(new T[size]), _cap(size), _size(0) {}
         virtual ~Vector() { delete[] _arr; }
 
 
@@ -45,6 +43,9 @@ class Vector {
          * Méretcsökkenés esetén törlődnek a "kilógó" adatok.
          */
         void resize(size_t size) {
+            if(size == _cap)
+                return;
+
             _cap = size;
             T* temp = new T[_cap];
             _size = std::min(_size, _cap);
@@ -86,9 +87,9 @@ class Vector {
          * \remarks
          * Automatikusan növeli a kapacitást, ha betelne.
          */
-        void push_back(T& n) {
+        void push_back(const T& n) {
             if(_size == _cap)
-                resize(_cap*2);
+                resize(std::max(_cap*2, (size_t)2));
 
             _arr[_size++] = n;
         }

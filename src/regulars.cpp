@@ -1,6 +1,5 @@
 #include "regulars.hpp"
 #include "math2d.hpp"
-#include "memtrace.h"
 
 Regular::Regular(size_t vertices, double radius, Point center, double phi)
 : Polygon(vertices), center(center), r(radius), phi(phi)
@@ -26,8 +25,8 @@ void Regular::calculateVertices()
     
     for(size_t i = 0; i < vCount(); i++)
     {
-        this->vertices[i] = {center.x+cos(alpha)*r,
-                             center.y+sin(alpha)*r};
+        this->vertices[i] = {center.x+cos(step*i + alpha)*r,
+                             center.y+sin(step*i + alpha)*r};
     }
 }
 
