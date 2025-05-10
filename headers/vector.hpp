@@ -14,6 +14,10 @@ class Vector {
         size_t _size;   ///< Jelenleg eltárolt elemek száma.
     public:
         Vector(size_t size = 0) : _arr(new T[size]), _cap(size), _size(0) {}
+        Vector(const Vector<T>& vec) : _arr(new T[vec._cap]), _cap(vec._cap), _size(vec._size) {
+            for(size_t i = 0; i < _size; i++)
+                _arr[i] = vec[i];
+        }
         virtual ~Vector() { delete[] _arr; }
 
 
@@ -42,7 +46,7 @@ class Vector {
          * \remarks
          * Méretcsökkenés esetén törlődnek a "kilógó" adatok.
          */
-        void resize(size_t size) {
+        void reserve(size_t size) {
             if(size == _cap)
                 return;
 
@@ -55,6 +59,24 @@ class Vector {
             }
             delete[] _arr;
             _arr = temp;
+        }
+
+
+        /**
+         * Lefoglalt elemek számának beállítása.
+         * 
+         * \param size Az új méret.
+         * 
+         * \remarks
+         * Méretcsökkentés esetén nem lesznek elérhetők a "kilógó" adatok, de nem törlődnek.
+         */
+        void resize(size_t size) {
+            if(size == _size)
+                return;
+            
+            if(size > _cap)
+                reserve(size);
+            _size = size;
         }
 
         /**
@@ -89,7 +111,7 @@ class Vector {
          */
         void push_back(const T& n) {
             if(_size == _cap)
-                resize(std::max(_cap*2, (size_t)2));
+                reserve(std::max(_cap*2, (size_t)2));
 
             _arr[_size++] = n;
         }
@@ -146,6 +168,16 @@ class Vector {
         }
 
         Vector<T>& operator=(const Vector<T> vec) {
+            if(&vec == this)
+                return *this;
+            
+            reserve(vec._cap);
+            _cap = vec._cap;
+            _size = vec._size;
+
+            for(size_t i = 0; i < _size; i++)
+                _arr[i] = vec[i];
+
             return *this;
         }
 };
