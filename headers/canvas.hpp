@@ -36,15 +36,18 @@ class Canvas {
          * Alakzat adatainak kiírása.
          * 
          * \param index Az alakzat indexe.
+         * \param os A kimenet, amire írni kell.
          * 
          * \throws std::out_of_range Ha az index kilóg az eltárolt alakzatok határán.
          */
-        void print(size_t index);
+        void print(size_t index, std::ostream& os);
 
         /**
          * Összes alakzat adatainak kilistázása.
+         * 
+         * \param os A kimenet, amire írni kell.
          */
-        void printAll();
+        void printAll(std::ostream& os);
 
         /**
          * Meghatározza, hogy egy alakzat alkalmas-e alapterületnek.

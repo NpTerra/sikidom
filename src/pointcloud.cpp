@@ -17,21 +17,21 @@ PointCloud::PointCloud(const PointCloud& pc)
 
 void PointCloud::setHull()
 {
-    Vector<Point> temp = points;
-    std::sort(temp.begin(), temp.end());
-    vertices.push_back(temp[0]);
-    vertices.push_back(temp[1]);
-    vertices.push_back(temp[2]);
+    //Vector<Point> temp = points;
+    std::sort(points.begin(), points.end());
+    vertices.push_back(points[0]);
+    vertices.push_back(points[1]);
+    vertices.push_back(points[2]);
 
-    for(size_t i = 3; i < temp.size(); i++)
+    for(size_t i = 3; i < points.size(); i++)
     {
-        if(math2d::leaning(vertices[vertices.size()-2], vertices.back(), temp[i]) == math2d::LEFT)
+        if(math2d::leaning(vertices[vertices.size()-2], vertices.back(), points[i]) == math2d::LEFT)
         {
-            vertices.push_back(temp[i]);
+            vertices.push_back(points[i]);
         }
         else
         {
-            vertices.back() = temp[i];
+            vertices.back() = points[i];
         }
     }
 }
@@ -59,7 +59,7 @@ void PointCloud::read(std::istream& is) {
 
     for(auto& x : this->points)
         is >> x;
-    //this->setHull();
+    this->setHull();
 }
 
 

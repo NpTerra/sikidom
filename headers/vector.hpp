@@ -144,6 +144,10 @@ class Vector {
 
             return _arr[index];
         }
+
+        Vector<T>& operator=(const Vector<T> vec) {
+            return *this;
+        }
 };
 
 #undef __IT_OUTOFRANGE

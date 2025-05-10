@@ -8,23 +8,24 @@ Canvas::~Canvas() {
 }
 
 void Canvas::remove(size_t index) {
-
+    shapes.erase(index);
 }
 
 void Canvas::clear() {
-
+    shapes.clear();
 }
 
 void Canvas::add(Shape* s) {
     shapes.push_back(s);
 }
 
-void Canvas::print(size_t index) {
-
+void Canvas::print(size_t index, std::ostream& os) {
+    os << shapes[index] << "\n";
 }
 
-void Canvas::printAll() {
-
+void Canvas::printAll(std::ostream& os) {
+    for(size_t i = 0; i < shapes.size(); i++)
+        os << i << " " << shapes[i] << "\n";
 }
 
 bool Canvas::isBaseShape(size_t index) {
