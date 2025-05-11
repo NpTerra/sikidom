@@ -29,6 +29,15 @@ void Canvas::printAll(std::ostream& os) {
 }
 
 bool Canvas::isBaseShape(size_t index) {
+    Shape* base = shapes[index];
+    for(auto& x : shapes) {
+        if(x == base)
+            continue;
+        
+        if(!base->contains(*x))
+            return false;
+    }
+
     return true;
 }
 
