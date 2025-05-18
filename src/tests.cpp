@@ -37,7 +37,7 @@ void runTests() {
     asd.push_back(3);
     std::cout << "teszt2\n";
     TEST(Adatok, Heterogen) {
-        istringstream a(string("3 0 0 10 10 10 0   4 50 0 0 45"));
+        istringstream a(string("3 0 0 10 10 10 0   4 0 0 50 45"));
         istringstream b(string("5 0 0 3 0 3 3 0 3 1.5 1.5"));
 
         Shape* poly = new Polygon();
@@ -45,15 +45,13 @@ void runTests() {
         PointCloud* cl = new PointCloud();
         a >> *poly >> *reg;
         b >> *cl;
-        delete poly;
         
         Canvas canv;
-        canv.add(nullptr);
-        //canv.remove(0);
+        canv.add(poly);
         canv.add(reg);
         canv.add(cl);
 
-        //EXPECT_TRUE(canv.isBaseShape(1));
+        EXPECT_TRUE(canv.isBaseShape(1));
     } END;
     std::cout << "teszt3\n";
 }
