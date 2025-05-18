@@ -30,6 +30,8 @@ class Regular : private Polygon, virtual public Shape {
         Regular(const Regular& reg);
         virtual ~Regular() = default;
 
+        virtual Shape* clone() const override;
+
         /**
          * \copydoc Shape::getAnchor()
          * 

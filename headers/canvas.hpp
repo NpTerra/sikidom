@@ -12,6 +12,13 @@ class Canvas {
         ~Canvas();
 
         /**
+         * Megadja az eltárolt alakzatok számát.
+         * 
+         * \returns Az eltárolt elemek száma.
+         */
+        size_t size() const;
+
+        /**
          * Alakzat törlése a listából.
          * 
          * \param index A törlendő alakzat indexe.
@@ -33,6 +40,13 @@ class Canvas {
         void add(Shape* s);
 
         /**
+         * Másik Canvasban lévő alakzatok másolatának hozzáadása a mostanihoz.
+         * 
+         * \param canv A másik Canvas.
+         */
+        void add(const Canvas& canv);
+
+        /**
          * Alakzat adatainak kiírása.
          * 
          * \param index Az alakzat indexe.
@@ -40,14 +54,14 @@ class Canvas {
          * 
          * \throws std::out_of_range Ha az index kilóg az eltárolt alakzatok határán.
          */
-        void print(size_t index, std::ostream& os);
+        void print(size_t index, std::ostream& os) const;
 
         /**
          * Összes alakzat adatainak kilistázása.
          * 
          * \param os A kimenet, amire írni kell.
          */
-        void printAll(std::ostream& os);
+        void printAll(std::ostream& os) const;
 
         /**
          * Meghatározza, hogy egy alakzat alkalmas-e alapterületnek.
@@ -59,16 +73,5 @@ class Canvas {
          * 
          * \throws std::out_of_range Ha az index kilóg az eltárolt alakzatok határán.
          */
-        bool isBaseShape(size_t index);
-
-        /**
-         * Alakzatok beolvasása bemenetről.
-         * Elsődlegesen fájlból való beolvasás céljából.
-         * 
-         * \param is A bemenet.
-         * \param c Az alakzatok tárolója.
-         * 
-         * \returns A bemenet referenciája, hogy lehetővé tegye az operátor láncolását.
-         */
-        friend std::istream& operator<<(std::istream& is, Canvas& c);
+        bool isBaseShape(size_t index) const;
 };

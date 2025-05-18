@@ -1,14 +1,20 @@
 #include "polygon.hpp"
 #include "math2d.hpp"
 
-Polygon::Polygon(size_t vertices) : vertices(vertices)
+#include "memtrace.h"
+
+Polygon::Polygon(size_t vertices) : Shape("Sokszög"), vertices(vertices)
 {}
 
-Polygon::Polygon(const Vector<Point>& vertices) : vertices(vertices)
+Polygon::Polygon(const Vector<Point>& vertices) : Shape("Sokszög"), vertices(vertices)
 {}
 
 Polygon::Polygon(const Polygon& poly) : Polygon(poly.vertices)
 {}
+
+Shape* Polygon::clone() const {
+    return new Polygon(*this);
+} 
 
 
 const Point& Polygon::getAnchor() const
@@ -136,5 +142,8 @@ void Polygon::read(std::istream& is) {
 
 
 void Polygon::print(std::ostream& os) const {
-    
+    os << vertices.size();
+    for(auto& x : vertices)
+        os << " " << x;
+    os << std::endl;
 }

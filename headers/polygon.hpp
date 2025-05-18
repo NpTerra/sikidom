@@ -27,6 +27,8 @@ class Polygon : virtual public Shape {
         Polygon(const Polygon& poly);
         virtual ~Polygon() {};
 
+        virtual Shape* clone() const override;
+
         /**
          * \copydoc Shape::getAnchor()
          * 

@@ -8,7 +8,7 @@ file(GLOB_RECURSE PROJECT_TOOLS   "./tools/*.hpp" "./tools/*.h" "./tools/*.cpp" 
 list(FILTER PROJECT_SOURCES EXCLUDE REGEX ".*main.*.cpp$")
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -DTESTINGG -DMEMTRACE")
 
 
 add_executable(${PROJECT_NAME} src/main.cpp ${PROJECT_SOURCES} ${PROJECT_HEADERS} ${PROJECT_TOOLS})

@@ -1,5 +1,7 @@
 #include "canvas.hpp"
 
+#include "memtrace.h"
+
 Canvas::Canvas() : shapes(0) {}
 
 Canvas::~Canvas() {
@@ -7,28 +9,41 @@ Canvas::~Canvas() {
         delete x;
 }
 
+size_t Canvas::size() const {
+    return shapes.size();
+}
+
 void Canvas::remove(size_t index) {
+    delete shapes[index];
     shapes.erase(index);
 }
 
 void Canvas::clear() {
+    for(Shape* x : shapes)
+        delete x;
     shapes.clear();
 }
 
 void Canvas::add(Shape* s) {
-    shapes.push_back(s);
+    if(s != nullptr)
+        shapes.push_back(s);
 }
 
-void Canvas::print(size_t index, std::ostream& os) {
-    os << shapes[index] << "\n";
+void Canvas::add(const Canvas& canv) {
+    for(auto& x : canv.shapes)
+        this->add(x->clone());
 }
 
-void Canvas::printAll(std::ostream& os) {
+void Canvas::print(size_t index, std::ostream& os) const {
+    os << shapes[index]->getName() << " " << *shapes[index];
+}
+
+void Canvas::printAll(std::ostream& os) const {
     for(size_t i = 0; i < shapes.size(); i++)
-        os << i << " " << shapes[i] << "\n";
+        os << i << " " << shapes[i]->getName() << " " << *shapes[i];
 }
 
-bool Canvas::isBaseShape(size_t index) {
+bool Canvas::isBaseShape(size_t index) const {
     Shape* base = shapes[index];
     for(auto& x : shapes) {
         if(x == base)
@@ -40,5 +55,3 @@ bool Canvas::isBaseShape(size_t index) {
 
     return true;
 }
-
-std::istream& operator<<(std::istream& is, Canvas& c);

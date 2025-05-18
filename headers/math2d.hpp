@@ -2,6 +2,10 @@
 
 #include "point.hpp"
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+
 namespace math2d {
     
     enum DIRECTION {
@@ -11,6 +15,15 @@ namespace math2d {
         BACK = -2,
         FRONT = 2
     };
+
+    /**
+     * Fok átváltása radiánba.
+     * 
+     * \param deg Az átváltandó fok.
+     * 
+     * \returns A fok értéke radiánban.
+     */
+    double degToRad(double deg);
     
     /**
      * Összehasonlít két azonos típusú értéket.

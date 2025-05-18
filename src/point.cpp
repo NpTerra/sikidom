@@ -2,6 +2,8 @@
 #include "point.hpp"
 #include "math2d.hpp"
 
+#include "memtrace.h"
+
 const double Point::MAXVAL = std::numeric_limits<double>::max();
 const double Point::MINVAL = std::numeric_limits<double>::min();
 
@@ -54,7 +56,7 @@ std::istream& operator>>(std::istream& is, Point& p) {
     return is;
 }
 
-std::ostream& operator<<(std::ostream& os, Point& p) {
+std::ostream& operator<<(std::ostream& os, const Point& p) {
     os << p.x << " " << p.y;
     return os;
 }

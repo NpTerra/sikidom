@@ -2,8 +2,10 @@
 #include <cstddef>
 #include "canvas.hpp"
 
-void printMenu();
+namespace utils {
+    void printMenu();
 
-int getNum(int min, int max);
+    size_t getNum(size_t min, size_t max);
 
-bool interact(Canvas &canv, int n);
+    bool interact(Canvas &canv, size_t n);
+}

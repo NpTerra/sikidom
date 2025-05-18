@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <string>
 #include "vector.hpp"
 #include "point.hpp"
 
@@ -19,8 +20,25 @@ class Shape {
          * \param os A kimenet.
          */
         virtual void print(std::ostream& os) const = 0;
+
+        std::string name;
     public:
+        Shape(const std::string& name) : name(name) {};
         virtual ~Shape() = default;
+
+        /**
+         * Alakzat típusának lekérdezése.
+         * 
+         * \returns Az alakzat típusának neve.
+         */
+        const std::string& getName() const { return name; }
+
+        /**
+         * Másolatot készít az objektumról.
+         * 
+         * \returns Az új objektum pointere.
+         */
+        virtual Shape* clone() const = 0;
 
         /**
          * Megadja az alakzat horgonypontját.

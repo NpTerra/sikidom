@@ -34,6 +34,8 @@ class PointCloud : private Polygon, virtual public Shape {
         PointCloud(const PointCloud& pc);
         virtual ~PointCloud() = default;
 
+        virtual Shape* clone() const override;
+
         /**
          * \copydoc Shape::getAnchor()
          * 

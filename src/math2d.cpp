@@ -1,6 +1,15 @@
 #include "math2d.hpp"
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+#include "memtrace.h"
+
 namespace math2d {
+
+    double degToRad(double deg) {
+        return deg*M_PI/180.0;
+    }
 
     bool isPointOnSegment(const Point& p, const Point& a, const Point& b)
     {

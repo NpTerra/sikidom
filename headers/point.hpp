@@ -111,7 +111,7 @@ class Point {
          * 
          * \returns A kimenet referenciája, hogy lehetővé tegye az operátor láncolását.
          */
-        friend std::ostream& operator<<(std::ostream& os, Point& p);
+        friend std::ostream& operator<<(std::ostream& os, const Point& p);
 
 
         /**

@@ -1,12 +1,13 @@
 #include "regulars.hpp"
 #include "math2d.hpp"
 
+#include "memtrace.h"
+
 Regular::Regular(size_t vertices, double radius, Point center, double phi)
-: Polygon(vertices), center(center), r(radius), phi(phi)
+: Shape("Szabályos"), Polygon(vertices), center(center), r(radius), phi(phi)
 {
     if(vertices == 1 || vertices == 2)
         throw "no shape";
-    
     calculateVertices();
 }
 
@@ -20,8 +21,8 @@ void Regular::calculateVertices()
     if(vCount() == 0)
         return;
     
-    double step = 360.0/vCount();
-    double alpha = phi;
+    double step = math2d::degToRad(360.0)/vCount();
+    double alpha = math2d::degToRad(phi);
     
     for(size_t i = 0; i < vCount(); i++)
     {
@@ -29,6 +30,11 @@ void Regular::calculateVertices()
                              center.y+sin(step*i + alpha)*r};
     }
 }
+
+
+Shape* Regular::clone() const {
+    return new Regular(*this);
+} 
 
 
 const Point& Regular::getAnchor() const
@@ -111,10 +117,7 @@ void Regular::read(std::istream& is) {
     if(vcount == 1 || vcount == 2)
         throw "no shape";
     
-    
-    double radius, phi;
-    Point center;
-    is >> radius >> center >> phi;
+    is >> center >> r >> phi;
     
     this->vertices.resize(vcount);
     this->calculateVertices();
@@ -122,5 +125,5 @@ void Regular::read(std::istream& is) {
 
 
 void Regular::print(std::ostream& os) const {
-    
+    os << vertices.size() << " " << center << " " << r << " " << phi << std::endl;
 }

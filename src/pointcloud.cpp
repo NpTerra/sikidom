@@ -2,16 +2,18 @@
 #include "pointcloud.hpp"
 #include "math2d.hpp"
 
+#include "memtrace.h"
+
 PointCloud::PointCloud(size_t points)
-: Polygon(0), points(points)
+: Shape("Pontfelhő"), Polygon(0), points(points)
 {}
 
 PointCloud::PointCloud(const Vector<Point>& points)
-: Polygon(0), points(points)
+: Shape("Pontfelhő"), Polygon(0), points(points)
 { setHull(); }
 
 PointCloud::PointCloud(const PointCloud& pc)
-: Polygon(pc), points(pc.points)
+: Shape("Pontfelhő"), Polygon(pc), points(pc.points)
 {}
 
 
@@ -35,6 +37,10 @@ void PointCloud::setHull()
         }
     }
 }
+
+Shape* PointCloud::clone() const {
+    return new PointCloud(*this);
+} 
 
 
 const Vector<Point>& PointCloud::getPoints() const
@@ -64,5 +70,8 @@ void PointCloud::read(std::istream& is) {
 
 
 void PointCloud::print(std::ostream& os) const {
-    
+    os << points.size();
+    for(auto& x : points)
+        os << " " << x;
+    os << std::endl;
 }

@@ -1,3 +1,5 @@
+#include "tests.hpp"
+
 #include <iostream>
 #include "gtest_lite.h"
 
@@ -9,13 +11,15 @@
 #include "pointcloud.hpp"
 
 #include <string>
+#include <sstream>
 using std::string;
 using std::istringstream;
 using std::ostringstream;
 
 #include "memtrace.h"
 
-int main() {
+void runTests() {
+    std::cout << "teszt1\n";
     TEST(Adatok, Pont) {
         istringstream a(string("10 20 20 10"));
         ostringstream b;
@@ -31,7 +35,7 @@ int main() {
     asd.push_back(1);
     asd.push_back(2);
     asd.push_back(3);
-    
+    std::cout << "teszt2\n";
     TEST(Adatok, Heterogen) {
         istringstream a(string("3 0 0 10 10 10 0   4 50 0 0 45"));
         istringstream b(string("5 0 0 3 0 3 3 0 3 1.5 1.5"));
@@ -51,4 +55,5 @@ int main() {
 
         //EXPECT_TRUE(canv.isBaseShape(1));
     } END;
+    std::cout << "teszt3\n";
 }

@@ -13,7 +13,7 @@ class Vector {
         size_t _cap;    ///< Jelenlegi tárolókapacitás.
         size_t _size;   ///< Jelenleg eltárolt elemek száma.
     public:
-        Vector(size_t size = 0) : _arr(new T[size]), _cap(size), _size(0) {}
+        Vector(size_t size = 0) : _arr(new T[size]), _cap(size), _size(size) {}
         Vector(const Vector<T>& vec) : _arr(new T[vec._cap]), _cap(vec._cap), _size(vec._size) {
             for(size_t i = 0; i < _size; i++)
                 _arr[i] = vec[i];
