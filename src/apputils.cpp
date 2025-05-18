@@ -10,7 +10,12 @@
 #include "memtrace.h"
 
 /**
+ * Fájlból beolvasott alakzatok betöltése egy Canvas-ba.
+ * Hiba esetén elveti a sikeresen beolvasott alakzatokat is.
  * 
+ * \param canv Az érvényes Canvas.
+ * 
+ * \throws std::ios_base::failure
  */
 void readFile(Canvas &canv) {
     std::cout << "Add meg a fájl elérési útját: ";

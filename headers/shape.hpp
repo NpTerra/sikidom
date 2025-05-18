@@ -21,7 +21,7 @@ class Shape {
          */
         virtual void print(std::ostream& os) const = 0;
 
-        std::string name;
+        std::string name; ///< Az alakzat típusának neve.
     public:
         Shape(const std::string& name) : name(name) {};
         virtual ~Shape() = default;
@@ -134,7 +134,7 @@ class Shape {
          * 
          * \returns A kimenet referenciája, hogy lehetővé tegye az operátor láncolását.
          */
-        friend std::ostream& operator<<(std::ostream& os, Shape& shape){
+        friend std::ostream& operator<<(std::ostream& os, const Shape& shape){
             shape.print(os);
         
             return os;
