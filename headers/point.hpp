@@ -120,12 +120,11 @@ class Point {
          * A következő operátorok lesznek definiálva:
          * - operator>
          * - operator<
-         * - operator==
          * - operator>=
          * - operator<=
          * - operator!=
          */
-        #define Comp(x) bool operator x (Point q) const;
-            Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)
+        #define Comp(x) bool operator x (const Point& q) const;
+            Comp(>) Comp(<) Comp(>=) Comp(<=) Comp(!=)
         #undef Comp
 };

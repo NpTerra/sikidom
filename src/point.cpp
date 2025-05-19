@@ -61,6 +61,6 @@ std::ostream& operator<<(std::ostream& os, const Point& p) {
     return os;
 }
 
-#define Comp(x) bool Point::operator x (Point q) const { return cmp(q) x 0; }
-    Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)
+#define Comp(x) bool Point::operator x (const Point& q) const { return cmp(q) x 0; }
+    Comp(>) Comp(<) Comp(>=) Comp(<=) Comp(!=)
 #undef Comp
