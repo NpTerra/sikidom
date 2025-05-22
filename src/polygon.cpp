@@ -85,14 +85,18 @@ bool Polygon::contains(const Point& p) const
     {
         j = (i+1)%vCount();
 
-        if(!math2d::isPointOnSegment(p, vertices[i], vertices[j]))
+        if(math2d::isPointOnSegment(p, vertices[i], vertices[j]))
             return true;
         
         if(math2d::doIntersect(p, inf, vertices[i], vertices[j]))
+            intersections+=2;
+        
+        if(math2d::isPointOnSegment(vertices[i], p, inf) ||
+            math2d::isPointOnSegment(vertices[j], p, inf))
             intersections++;
     }
 
-    return intersections%2 == 1;
+    return (intersections/2)%2 == 1;
 }
 
 
