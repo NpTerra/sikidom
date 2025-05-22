@@ -16,17 +16,26 @@ PointCloud::PointCloud(const PointCloud& pc)
 : Shape("Pontfelhő"), Polygon(pc), points(pc.points)
 {}
 
-
 void PointCloud::setHull()
 {
     Vector<Point> temp = points;
-    std::sort(temp.begin(), temp.end());
+    std::swap(*temp.begin(), *std::min_element(temp.begin(), temp.end()));
+    Point m = temp[0];
+    
+    std::sort(temp.begin()+1, temp.end(), [m](const Point& a, const Point& b){
+        return std::atan((a.y-m.y)/(a.x-m.x)) < std::atan((b.y-m.y)/(b.x-m.x));
+    });
+
     vertices.push_back(temp[0]);
     vertices.push_back(temp[1]);
     vertices.push_back(temp[2]);
 
     for(size_t i = 3; i < temp.size(); i++)
     {
+        Point a = vertices[vertices.size()-2];
+        Point b = vertices.back();
+        Point c = temp[i];
+        a = a + b + c;
         if(math2d::leaning(vertices[vertices.size()-2], vertices.back(), temp[i]) == math2d::LEFT)
         {
             vertices.push_back(temp[i]);
@@ -73,5 +82,4 @@ void PointCloud::print(std::ostream& os) const {
     os << points.size();
     for(auto& x : points)
         os << " " << x;
-    os << std::endl;
 }

@@ -145,5 +145,4 @@ void Polygon::print(std::ostream& os) const {
     os << vertices.size();
     for(auto& x : vertices)
         os << " " << x;
-    os << std::endl;
 }

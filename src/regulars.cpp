@@ -125,5 +125,5 @@ void Regular::read(std::istream& is) {
 
 
 void Regular::print(std::ostream& os) const {
-    os << vertices.size() << " " << center << " " << r << " " << phi << std::endl;
+    os << vertices.size() << " " << center << " " << r << " " << phi;
 }

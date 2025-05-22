@@ -136,6 +136,7 @@ class Shape {
          */
         friend std::ostream& operator<<(std::ostream& os, const Shape& shape){
             shape.print(os);
+            os << " A:" << shape.area() << " P:" << shape.perimeter();
         
             return os;
         }

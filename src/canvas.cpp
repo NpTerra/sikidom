@@ -35,12 +35,14 @@ void Canvas::add(const Canvas& canv) {
 }
 
 void Canvas::print(size_t index, std::ostream& os) const {
-    os << shapes[index]->getName() << " " << *shapes[index];
+    os << shapes[index]->getName() << " " << *shapes[index] << std::endl;
 }
 
 void Canvas::printAll(std::ostream& os) const {
-    for(size_t i = 0; i < shapes.size(); i++)
-        os << i << " " << shapes[i]->getName() << " " << *shapes[i];
+    for(size_t i = 0; i < shapes.size(); i++) {
+        os << i << " ";
+        print(i, os);
+    }
 }
 
 bool Canvas::isBaseShape(size_t index) const {
